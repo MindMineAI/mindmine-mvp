@@ -1,0 +1,27 @@
+def analyze_input(user_text):
+    # 1. Preprocessing
+    cleaned_text = preprocess_text(user_text)
+    sentiment_score = get_sentiment(cleaned_text)
+    topic_vectors = extract_semantic_topics(cleaned_text)
+    
+    # 2. Soul Match Score (SMS)
+    soul_keywords = ['oneness', 'truth', 'gratitude', 'clarity', 'presence']
+    sms = semantic_alignment(cleaned_text, soul_keywords)
+    
+    # 3. Signal Clarity Index (SCI)
+    contradiction_score = detect_internal_conflicts(cleaned_text)
+    sci = 1 - contradiction_score
+    
+    # 4. Cognitive Toxin Density (CTD)
+    toxin_patterns = ['self-doubt', 'envy', 'anger', 'procrastination', 'fear']
+    ctd = pattern_match_density(cleaned_text, toxin_patterns)
+    
+    # 5. Resonance Purity Quotient (RPQ)
+    rpq = (sms + sci) / 2 - ctd
+
+    return {
+        'Soul Match Score': round(sms, 2),
+        'Signal Clarity Index': round(sci, 2),
+        'Cognitive Toxin Density': round(ctd, 2),
+        'Resonance Purity Quotient': round(rpq, 2)
+    }
